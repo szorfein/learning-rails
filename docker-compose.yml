@@ -1,0 +1,40 @@
+version: '3.4'
+services:
+  webapp_setup:
+    build:
+      context: .
+      network: host
+    depends_on:
+      - postgres
+    environment:
+      - PASSENGER_APP_ENV=development
+    entrypoint: ./setup.sh
+  webapp:
+    container_name: webapp
+    build:
+      context: .
+      network: host
+    depends_on:
+      - postgres
+      - webapp_setup
+    environment:
+      - PASSENGER_APP_ENV=development
+    ports:
+      - "80:80"
+    volumes:
+      - .:/home/brakk/labs/learning-rails
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=mysecretpassword
+      - POSTGRES_USER=webapp
+      - POSTGRES_DB=webapp_development
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data
+  postgres_data:
+    image: postgres
+    volumes:
+      - /home/brakk/labs/webapp_DB:/var/lib/postgresql/data
+    command: /bin/true
