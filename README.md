@@ -22,3 +22,15 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+## Docker
+Example of docker command with rail: 
+
+    $ docker-compose run --rm webapp bash -c "bin/rails <command>"
+
+## Generate a new controller
+
+    $ bin/rails g controller Greeting 
+
+## Rebuild after update
+
+    $ docker-compose up --build

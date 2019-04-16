@@ -20,10 +20,10 @@ RUN bundle config --global silence_root_warning 1
 WORKDIR /tmp
 RUN bundle install
 
-COPY . /home/brakk/labs/docker-rails/build/webapp
+COPY . /home/brakk/labs/learning-rails
 RUN usermod -u 1000 app
-RUN chown -R app:app /home/brakk/labs/docker-rails/build/webapp
-WORKDIR /home/brakk/labs/docker-rails/build/webapp
+RUN chown -R app:app /home/brakk/labs/learning-rails
+WORKDIR /home/brakk/labs/learning-rails
 
 # Clean up
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
