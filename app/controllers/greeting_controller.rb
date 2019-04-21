@@ -1,5 +1,15 @@
 class GreetingController < ApplicationController
   def index
-    render plain: "Hello World"
+    @message = "Hello World"
+    @current_time = Time.now
+  end
+
+  def show
+  end
+
+  def say_goodmorning
+  end
+
+  def say_goodafternoon
   end
 end
