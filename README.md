@@ -1,24 +1,40 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Learning rails and briefly list few usefull commands.
 
-Things you may want to cover:
+# Rails commands
 
-* Ruby version
+### Gen new controller
 
-* System dependencies
+    $ docker-compose run --rm learning-rails bash -c "bin/rails g controller Greeting"
 
-* Configuration
+### Gen new scaffold
 
-* Database creation
+    $ docker-compose run --rm learning-rails bash -c "bin/rails g scaffold contacts"
+    $ docker-compose run --rm learning-rails bash -c "bin/rails g scaffold contacts title:string content:text"
 
-* Database initialization
+### Create table
 
-* How to run the test suite
+    $ docker-compose run --rm learning-rails bash -c "bin/rails db:migrate"
 
-* Services (job queues, cache servers, search engines, etc.)
+### Delete scaffold
 
-* Deployment instructions
+    $ docker-compose run --rm learning-rails bash -c "bin/rails destroy scaffold contacts"
+    
+# Postgres commands
 
-* ...
+### Connect to psql
+
+    $ psql -h localhost -p 5432 -d webapp_development -U webapp --password
+
+### List databases
+
+    \list
+
+### List tables
+
+    \dt
+
+### Drop tables
+
+    DROP TABLE contacts;
