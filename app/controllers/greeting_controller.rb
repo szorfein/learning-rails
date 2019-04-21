@@ -4,9 +4,6 @@ class GreetingController < ApplicationController
     @current_time = Time.now
   end
 
-  def show
-  end
-
   def say_goodmorning
   end
 
