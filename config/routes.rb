@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   resources :faqs
   resources :categories
   resources :contacts
