@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   end
   resources :random_image
   resources :contact
+
+  root "projects#index"
+  resources :projects
 end

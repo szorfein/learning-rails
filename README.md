@@ -38,3 +38,14 @@ Learning rails and briefly list few usefull commands.
 ### Drop tables
 
     DROP TABLE contacts;
+
+### DATABASE
+The test database may need to be created:
+
+    CREATE DATABASE webapp_test;
+    
+### Rspec
+Run test with:
+
+    $ docker-compose run --rm learning-rails bash -c "bin/bundle exec rspec bacon/spec/bacon_spec.rb" 
+
