@@ -8,6 +8,11 @@ Learning rails and briefly list few usefull commands.
 
     $ docker-compose run --rm learning-rails bash -c "bin/rails g controller Greeting"
 
+### Gen new model
+
+    $ docker-compose run --rm learning-rails bash -c "bin/rails g model Greeting"
+    $ docker-compose run --rm learning-rails bash -c "bin/rails g model Greeting title:string content:text"
+
 ### Gen new scaffold
 
     $ docker-compose run --rm learning-rails bash -c "bin/rails g scaffold contacts"
@@ -21,6 +26,17 @@ Learning rails and briefly list few usefull commands.
 
     $ docker-compose run --rm learning-rails bash -c "bin/rails destroy scaffold contacts"
     
+### Test validation with rails server
+
+    $ docker-compose run --rm learning-rails bash -c "bin/rails c"
+    > Project.create!(name: "Learning Rails")
+    > quit
+
+### Clearing tables on rails server
+
+    $ docker-compose run --rm learning-rails bash -c "bin/rails c"
+    > Project.delete_all
+
 # Postgres commands
 
 ### Connect to psql

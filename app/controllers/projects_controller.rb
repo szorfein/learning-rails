@@ -10,11 +10,14 @@ class ProjectsController < ApplicationController
   # POST request
   def create
     @project = Project.new(project_params)
-    if @project.save
-      flash[:notice] = 'Project was successfully created.'
-      redirect_to @project
-    else
-      # nothing, yet
+
+    respond_to do |format|
+      if @project.save
+        format.html { redirect_to @project, notice: 'Project has been created.' }
+      else
+        format.html { render :new }
+        flash.now[:alert] = "Project has not been created."
+      end
     end
   end
 
