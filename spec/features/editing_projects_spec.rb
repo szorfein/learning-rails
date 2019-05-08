@@ -17,4 +17,11 @@ RSpec.feature "Users can edit existing projects" do
     visit "/"
     expect(page).to have_content "Sublime Text 4 beta"
   end
+
+  scenario "with providing invalid attributes" do
+    fill_in "Name", with: ""
+    click_button "Update Project"
+
+    expect(page).to have_content "Name can't be blank"
+  end
 end
