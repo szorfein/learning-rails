@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update]
+  before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
     @projects = Project.all
@@ -24,10 +24,10 @@ class ProjectsController < ApplicationController
   end
 
   def show 
+    @project = Project.find(params[:id])
   end
 
   def edit
-    @project = Project.find(params[:id])
   end
 
   def update
@@ -39,14 +39,24 @@ class ProjectsController < ApplicationController
       end
     end
   end
+
+  def destroy
+    @project = Project.find(params[:id])
+    @project.destroy
+    respond_to do |format|
+      format.html { redirect_to projects_url, notice: 'Project has been deleted.' }
+    end
+  end
+
+  private
+
+  def set_project
+    @project = Project.find(params[:id])
+  end
+
+  def project_params
+    params.require(:project).permit(:name, :description, :category_id)
+  end
+
 end
 
-private
-
-def set_project
-  @project = Project.find(params[:id])
-end
-
-def project_params
-  params.require(:project).permit(:name, :description, :category_id)
-end
