@@ -7,17 +7,17 @@ RSpec.feature "Users can create new projects" do
     click_link "New Project"
   end
 
-  scenario "with vaid attributes" do
+  scenario "with valid attributes" do
     fill_in "Name", with: "Sublime Text 3"
     fill_in "Description", with: "A text editor for everyone"
     click_button "Create Project"
 
     expect(page).to have_content "Project has been created."
 
-    project = Project.find_by(name: "nice")
+    project = Project.find_by(name: "Sublime Text 3")
     expect(page.current_url).to eq project_url(project)
 
-    title = "nice - Project - Learning Rails"
+    title = "Sublime Text 3 - Projects - Learning Rails"
     expect(page).to have_title title
   end
 
