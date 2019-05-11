@@ -55,10 +55,15 @@ Learning rails and briefly list few usefull commands.
 
     DROP TABLE contacts;
 
-### DATABASE
-The test database may need to be created:
+### DATABASE TEST, PROD
+Theses databases have to be create:
 
-    CREATE DATABASE webapp_test;
+    $ docker-compose run --rm learning-rails bash -c "RAILS_ENV=test bin/rails db:create"
+    $ docker-compose run --rm learning-rails bash -c "RAILS_ENV=production bin/rails db:create"
+
+Or manually into psql:
+
+    > CREATE DATABASE webapp_test;
     
 ### Rspec
 Run test with:
