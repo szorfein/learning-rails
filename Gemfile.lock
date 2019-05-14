@@ -75,6 +75,8 @@ GEM
       factory_bot (~> 4.11.1)
       railties (>= 3.0.0)
     ffi (1.10.0)
+    font-awesome-rails (4.7.0.5)
+      railties (>= 3.2, < 6.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.6.0)
@@ -173,6 +175,9 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    simple_form (4.1.0)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -216,6 +221,7 @@ DEPENDENCIES
   capybara (~> 3.10)
   coffee-rails (~> 4.2)
   factory_bot_rails
+  font-awesome-rails (~> 4.7)
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
@@ -226,6 +232,7 @@ DEPENDENCIES
   rspec-rails (~> 3.8)
   sass-rails (~> 5.0)
   sassc-rails (>= 2.1.0)
+  simple_form (~> 4.1.0)
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
