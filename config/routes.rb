@@ -14,5 +14,8 @@ Rails.application.routes.draw do
   resources :contact
 
   root "projects#index"
-  resources :projects
+  # create route /project/:project_id/tickets/:id
+  resources :projects do
+    resources :tickets
+  end
 end

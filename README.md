@@ -13,6 +13,10 @@ Learning rails and briefly list few usefull commands.
     $ docker-compose run --rm learning-rails bash -c "bin/rails g model Greeting"
     $ docker-compose run --rm learning-rails bash -c "bin/rails g model Greeting title:string content:text"
 
+A `foreign_key` on `_id` with the keyword `references`:
+
+    $ docker-compose run --rm learning-rails bash -c "bin/rails g model Greeting title:string content:text project:references"
+
 ### Gen new scaffold
 
     $ docker-compose run --rm learning-rails bash -c "bin/rails g scaffold contacts"
@@ -66,7 +70,11 @@ Or manually into psql:
     > CREATE DATABASE webapp_test;
     
 ### Rspec
-Run test with:
+Run all test with:
+
+    $ docker-compose run --rm learning-rails bash -c "bin/bundle exec rspec"
+
+Run a specific test with:
 
     $ docker-compose run --rm learning-rails bash -c "bin/bundle exec rspec bacon/spec/bacon_spec.rb" 
 
