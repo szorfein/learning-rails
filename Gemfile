@@ -40,6 +40,7 @@ gem 'sassc-rails', '>= 2.1.0'
 gem 'autoprefixer-rails', '~> 9.5.1.1'
 gem 'font-awesome-rails', '~> 4.7'
 gem 'simple_form', '~> 4.1.0'
+gem 'devise', '~> 4.6.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
