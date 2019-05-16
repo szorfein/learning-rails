@@ -35,6 +35,13 @@ class TicketsController < ApplicationController
     end
   end
 
+  def destroy
+    @ticket.destroy
+    respond_to do |format|
+      format.html { redirect_to @project, notice: 'Ticket has been deleted.' }
+    end
+  end
+
   private
 
   def set_project
