@@ -22,6 +22,19 @@ class TicketsController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    respond_to do |format|
+      if @ticket.update(ticket_params)
+        format.html { redirect_to [@project, @ticket], notice: 'Ticket has been updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
+  end
+
   private
 
   def set_project
