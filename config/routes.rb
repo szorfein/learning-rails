@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'application/index'
+  end
+
   devise_for :users
   resources :posts
   resources :faqs
@@ -18,5 +22,9 @@ Rails.application.routes.draw do
   # create route /project/:project_id/tickets/:id
   resources :projects do
     resources :tickets
+  end
+
+  namespace :admin do
+    root 'application#index'
   end
 end

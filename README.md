@@ -4,6 +4,10 @@ Learning rails and briefly list few usefull commands.
 
 # Rails commands
 
+### View all routes
+
+    $ docker-compose run --rm learning-rails bash -c "bin/rake routes"
+
 ### Gen new controller
 
     $ docker-compose run --rm learning-rails bash -c "bin/rails g controller Greeting"
@@ -21,6 +25,13 @@ A `foreign_key` on `_id` with the keyword `references`:
 
     $ docker-compose run --rm learning-rails bash -c "bin/rails g scaffold contacts"
     $ docker-compose run --rm learning-rails bash -c "bin/rails g scaffold contacts title:string content:text"
+
+### Generate a namespaced controller
+To create for example a controller with only the `index` part, do it:
+
+    $ docker-compose run --rm learning-rails bash -c "bin/rails g controller admin/application index"
+
+Will generate a controller `app/controller/admin/application` with only the `index`.
 
 ### Create table
 

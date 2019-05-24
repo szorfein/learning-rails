@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 unless User.exists?(email: "admin@ticketee.com")
-  User.create!(email: "admin@ŧicketee.com", password: "password", admin: true)
+  User.create!(email: "admin@ticketee.com", password: "password", admin: true)
 end
 
 unless User.exists?(email: "viewer@ticketee.com")
