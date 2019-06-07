@@ -22,7 +22,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - .:/home/brakk/labs/learning-rails
+      - .:/home/yagdra/labs/learning-rails
   postgres:
     image: postgres
     environment:
@@ -36,5 +36,5 @@ services:
   postgres_data:
     image: postgres
     volumes:
-      - /home/brakk/labs/learning-rails_DB:/var/lib/postgresql/data
+      - /home/yagdra/labs/learning-rails_DB:/var/lib/postgresql/data
     command: /bin/true
