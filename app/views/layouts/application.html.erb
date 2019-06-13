@@ -65,7 +65,17 @@
     </div>
   </nav>
   <div class="container">
-    <%= yield %>
+    <!-- display error https://launchschool.com/blog/rails-and-foundation-part-2 -->
+    <div class="row">
+      <% flash.each do |name, msg| %>
+        <% if msg.is_a?(String) %>
+          <%= content_tag :div, msg, class: "alert-box #{name} radius" %>
+        <% end %>
+      <% end %>
+    </div>
+    <div clas="row">
+      <%= yield %>
+    </div>
   </div>
   </body>
 </html>
