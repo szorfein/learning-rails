@@ -11,7 +11,7 @@ class ApplicationPolicy
   end
 
   def show?
-    true 
+    user.try(:admin?) || record.has_member?(user)
   end
 
   def create?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    false
+    user.try(:admin?) || record.roles.exists?(user_id: user, role: 'manager')
   end
 
   def edit?

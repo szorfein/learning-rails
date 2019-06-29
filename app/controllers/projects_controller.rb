@@ -10,9 +10,11 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    authorize @project, :update?
   end
 
   def update
+    authorize @project, :update?
     respond_to do |format|
       if @project.update(project_params)
         format.html { redirect_to @project, notice: 'Project has been updated.' }
