@@ -5,11 +5,13 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = @project.tickets.build
+    authorize @ticket, :create?
   end
   
   def create
     @ticket = @project.tickets.build(ticket_params)
     @ticket.author = current_user
+    authorize @ticket, :create?
 
     respond_to do |format|
       if @ticket.save
