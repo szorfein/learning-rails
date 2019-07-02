@@ -11,7 +11,7 @@ class ApplicationPolicy
   end
 
   def show?
-    user.try(:admin?) || record.has_member?(user)
+    scope.where(:id => record.id).exists?
   end
 
   def create?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    user.try(:admin?) || record.roles.exists?(user_id: user, role: 'manager')
+    false
   end
 
   def edit?
@@ -32,6 +32,10 @@ class ApplicationPolicy
 
   def destroy?
     false
+  end
+
+  def scope
+    Pundit.policy_scope!(user, record.class)
   end
 
   class Scope
