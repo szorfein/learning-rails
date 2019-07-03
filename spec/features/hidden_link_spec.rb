@@ -12,7 +12,7 @@ RSpec.feature "Users can only see the appropriate links" do
     end
   end
 
-  context "regular users" do
+  context "non-admin users (project viewers)" do
     before do
       login_as(user)
       assign_role!(user, :viewer, project)
