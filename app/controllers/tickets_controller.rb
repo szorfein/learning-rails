@@ -27,9 +27,12 @@ class TicketsController < ApplicationController
   end
 
   def edit
+    authorize @ticket, :update?
   end
 
   def update
+    authorize @ticket, :update?
+
     respond_to do |format|
       if @ticket.update(ticket_params)
         format.html { redirect_to [@project, @ticket], notice: 'Ticket has been updated.' }
