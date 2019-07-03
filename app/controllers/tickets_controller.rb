@@ -43,6 +43,8 @@ class TicketsController < ApplicationController
   end
 
   def destroy
+    authorize @ticket, :destroy?
+
     @ticket.destroy
     respond_to do |format|
       format.html { redirect_to @project, notice: 'Ticket has been deleted.' }
