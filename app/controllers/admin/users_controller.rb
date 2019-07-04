@@ -1,4 +1,5 @@
 class Admin::UsersController < Admin::ApplicationController
+  before_action :set_projects, only: [:new, :create, :edit, :update]
   before_action :set_user, only: [:show, :edit, :update, :archive]
 
   def index
@@ -29,18 +30,28 @@ class Admin::UsersController < Admin::ApplicationController
   end
 
   def update
-    respond_to do |format|
+    if params[:user][:password].blank?
+      params[:user].delete(:password)
+    end
 
-      # if user[:password] is void, remove the field from the user_param
-      if params[:user][:password].blank?
-        params[:user].delete(:password)
+    User.transaction do
+      @user.roles.clear
+      role_data = params.fetch(:roles, [])
+      role_data.each do |project_id, role_name|
+        if role_name.present?
+          @user.roles.build(project_id: project_id, role: role_name)
+        end
       end
 
-      if @user.update(user_params)
-        format.html { redirect_to admin_users_path, notice: "User has been updated." }
-      else
-        flash.now[:alert] = "User has not been updated."
-        render "edit"
+      respond_to do |format|
+        # if user[:password] is void, remove the field from the user_param
+        if @user.update(user_params)
+          format.html { redirect_to admin_users_path, notice: "User has been updated." }
+        else
+          flash.now[:alert] = "User has not been updated."
+          render "edit"
+          raise ActiveRecord::Rollback
+        end
       end
     end
   end
@@ -58,6 +69,10 @@ class Admin::UsersController < Admin::ApplicationController
   end
   
   private
+
+  def set_projects
+    @projects = Project.order(:name)
+  end
 
   def set_user
     @user = User.find(params[:id])
