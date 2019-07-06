@@ -36,7 +36,7 @@
     <div class="attachment">
       <p>
       <%= link_to File.basename(@ticket.attachment.url),
-        @ticket.attachment.url %>
+        attachment_path(@ticket) %>
       (<%= number_to_human_size(@ticket.attachment.size) %>)
       </p>
     </div>

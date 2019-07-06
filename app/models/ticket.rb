@@ -1,4 +1,4 @@
-class Ticket < ApplicationRecord
+class Ticket < ActiveRecord::Base
   belongs_to :project
   belongs_to :author, class_name: "User", optional: true
   validates :name, :description, presence: true
