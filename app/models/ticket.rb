@@ -4,4 +4,5 @@ class Ticket < ActiveRecord::Base
   validates :name, :description, presence: true
   validates :description, length: { minimum: 10 }
   mount_uploader :attachment, AttachmentUploader
+  has_many :comments, dependent: :destroy
 end
