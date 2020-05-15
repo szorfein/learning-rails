@@ -40,7 +40,7 @@ gem 'sassc-rails', '>= 2.1.0'
 gem 'autoprefixer-rails', '~> 9.5.1.1'
 gem 'font-awesome-rails', '~> 4.7'
 gem 'simple_form', '~> 4.1.0'
-gem 'devise', '~> 4.6.2'
+gem 'devise', '~> 4.7.1'
 gem 'pundit', '~> 2.0'
 gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
 
